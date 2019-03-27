@@ -15,9 +15,6 @@ $sidebar-width-close: 150px;
         width: 150px;
         @include transition(width);
     };
-    @media( max-width: 800px){
-        display: none;
-    };
     .group-photo{
         width: 100%;
         height: 250px;
