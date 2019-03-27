@@ -1,0 +1,83 @@
+@import '../../types/colors.scss';
+@import '../../types/mixins.scss';
+@import '../../types/fonts.scss';
+
+.side-bar{
+    background: $second-color;
+    position: absolute;
+    height: 100vh;
+    width: 350px;
+    @include transition;
+    @media( max-width: 1300px){
+        width: 150px;
+        @include transition;
+    };
+    @media( max-width: 800px){
+        display: none;
+    };
+    .group-photo{
+        width: 100%;
+        height: 250px;
+        background: $primary-color;
+        @include transition;
+        @media( max-width: 1300px){
+            width: 100%;
+            height: 120px;
+            @include transition;
+        };
+        .user-photo {
+            height: 150px;
+            width:150px;
+            border-radius: 100%;
+            position: absolute;
+            left:20px;
+            top: 30px;
+            @include border-definition('max');
+            @include transition;
+            @media( max-width: 1300px){
+                height: 75px;
+                width:75px;
+                margin-left: -37px;
+                left: 45%;
+                top: 15px;
+                @include border-definition('min');
+                @include transition;
+            };
+        };
+        .job-photo {
+            height:75px;
+            width:75px;
+            border-radius: 100%;
+            position: absolute;
+            right:140px;
+            top: 125px;
+            border: 3px solid $border-color;
+            background-color: $background-second-color;
+            box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.192);
+            z-index: 1;
+            @include transition;
+            @media( max-width: 1300px){
+                height:37px;
+                width:37px;
+                right:30px;
+                top: 60px;
+                @include transition;
+            }
+        };
+        .user-msg {
+            color: #FFFF;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            position: absolute;
+            left: 60%;  
+            top: 70px;
+            @media( max-width: 1300px) {
+                display: none;
+            }
+            span {
+                display: block;
+                font-weight: bold;
+                font-size: 20px;
+            }
+        }
+    }
+}

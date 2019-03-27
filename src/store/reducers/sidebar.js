@@ -1,6 +1,4 @@
 const SIDEBAR_CONTENT = {
-    userPhoto: "http://twixar.me/dsGK",
-    jobPhoto: "http://twixar.me/hsGK",
     sections : [
         {
             name: "Home",

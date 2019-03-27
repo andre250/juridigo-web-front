@@ -1,13 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import './index.css'
+import './index.scss'
 
-const SideBar = ({ sections, userPhoto, jobPhoto }) => (
+const SideBar = ({ sections, userPhoto, jobPhoto, userName }) => (
     <div className="side-bar">
         <div className="group-photo">
             <img className="user-photo" src={userPhoto} alt="user description"></img>
             <img className="job-photo" src={jobPhoto} alt="job description"></img>
+            <p className="user-msg">
+                Bem vindo, 
+                <span>
+                    {userName}
+                </span>
+            </p>
         </div>
         <ul>
             {sections.map(section => (
@@ -31,8 +37,9 @@ const SideBar = ({ sections, userPhoto, jobPhoto }) => (
 
 const mapStateToProps = state => ({
     sections: state.sidebar.sections,
-    userPhoto: state.sidebar.userPhoto,
-    jobPhoto: state.sidebar.jobPhoto
+    userPhoto: state.user.userPhoto,
+    jobPhoto: state.user.jobPhoto,
+    userName: state.user.userName
 });
 
 export default connect(mapStateToProps)(SideBar)
