@@ -2,15 +2,18 @@
 @import '../../types/mixins.scss';
 @import '../../types/fonts.scss';
 
+$sidebar-width-open: 350px;
+$sidebar-width-close: 150px;
+
 .side-bar{
     background: $second-color;
     position: absolute;
     height: 100vh;
-    width: 350px;
-    @include transition;
+    width: $sidebar-width-open;
+    transition: 0.75s width;
     @media( max-width: 1300px){
         width: 150px;
-        @include transition;
+        @include transition(width);
     };
     @media( max-width: 800px){
         display: none;
@@ -19,21 +22,22 @@
         width: 100%;
         height: 250px;
         background: $primary-color;
-        @include transition;
+        @include transitionAll;
         @media( max-width: 1300px){
             width: 100%;
             height: 120px;
-            @include transition;
+            @include transitionAll;
         };
         .user-photo {
             height: 150px;
             width:150px;
             border-radius: 100%;
             position: absolute;
-            left:20px;
+            margin-left: -95px;
+            left:50%;
             top: 30px;
             @include border-definition('max');
-            @include transition;
+            @include transitionAll;
             @media( max-width: 1300px){
                 height: 75px;
                 width:75px;
@@ -41,7 +45,7 @@
                 left: 45%;
                 top: 15px;
                 @include border-definition('min');
-                @include transition;
+                @include transitionAll;
             };
         };
         .job-photo {
@@ -49,35 +53,84 @@
             width:75px;
             border-radius: 100%;
             position: absolute;
-            right:140px;
+            right:80px;
             top: 125px;
             border: 3px solid $border-color;
             background-color: $background-second-color;
             box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.192);
             z-index: 1;
-            @include transition;
+            @include transitionAll;
             @media( max-width: 1300px){
                 height:37px;
                 width:37px;
                 right:30px;
                 top: 60px;
-                @include transition;
-            }
+                @include transitionAll;
+            };
         };
         .user-msg {
-            color: #FFFF;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: $background-second-color;
+            font-family: $main-font;
             position: absolute;
-            left: 60%;  
-            top: 70px;
+            left: 13%;  
+            top: 200px;
             @media( max-width: 1300px) {
                 display: none;
-            }
+            };
             span {
-                display: block;
                 font-weight: bold;
                 font-size: 20px;
+            };
+        };
+    };
+    .menu {
+        list-style: none;
+        color: $font-btn-menu;
+        padding: 0;
+        margin: 0;
+        font-family: $main-font;
+        font-weight: bold;
+        .menu-action {
+            text-decoration: none;
+            background: $primary-btn-menu;
+            color: $font-btn-menu;
+            padding: 20px;
+            width: calc(#{$sidebar-width-open} + 5px);
+            display: block;
+            margin-bottom: 2px;
+            box-shadow: 5px 5px rgba(0, 0, 0, 0.192);
+            box-sizing: border-box;
+            @include transitionAll;
+            &:hover{
+                background: $primary-btn-menu-hover;
+            };
+            @media(max-width: 1300px){
+                width: calc(#{$sidebar-width-close} + 5px);
+                @include transitionAll;
+            }
+            .menu-logo {
+                width: 30px;
+                margin-bottom: -7px;
+                margin-right: 20px;
+                @media(max-width: 1300px){
+                   margin-left: calc(#{$sidebar-width-close} / 4 );
+                }
+            }
+            .menu-text{
+                @media(max-width: 1300px){
+                    display: none;
+                }
+            }
+
+        }
+        .sub-menu {
+            list-style: none;
+            .sub-menu-item {
             }
         }
+    }
+    .menu-exit {
+        position: absolute;
+        bottom: 0;
     }
 }

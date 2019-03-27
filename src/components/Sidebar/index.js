@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import './index.scss'
+import './index.scss';
+import sair from '../../assets/delete.png';
 
 const SideBar = ({ sections, userPhoto, jobPhoto, userName }) => (
     <div className="side-bar">
@@ -9,22 +10,25 @@ const SideBar = ({ sections, userPhoto, jobPhoto, userName }) => (
             <img className="user-photo" src={userPhoto} alt="user description"></img>
             <img className="job-photo" src={jobPhoto} alt="job description"></img>
             <p className="user-msg">
-                Bem vindo, 
-                <span>
-                    {userName}
-                </span>
+                Bem vindo, <span>{" " + userName}</span>
             </p>
         </div>
-        <ul>
+        <ul className="menu">
             {sections.map(section => (
                 <li>
                     {section.path
-                        ? <Link to={section.path}>{section.name}</Link>
+                        ? <Link className="menu-action" to={section.path}>
+                            <img className="menu-logo" alt="logo definition" src={section.icon}></img>
+                            <span className="menu-text">{section.name}</span>
+                        </Link>
                         : <span>
-                            {section.name}
-                            <ul>
+                            <span className="menu-action">
+                                <img className="menu-logo" alt="logo definition" src={section.icon}></img>
+                                <span className="menu-text">{section.name}</span>
+                            </span>
+                            <ul className="sub-menu">
                                 {section.subpath.map(sub => (
-                                    <li>{sub.name}</li>
+                                    <li className="sub-menu-item">{sub.name}</li>
                                 ))}
                             </ul>
                         </span>
@@ -32,6 +36,13 @@ const SideBar = ({ sections, userPhoto, jobPhoto, userName }) => (
                 </li>
             ))}
         </ul>
+        <div className="menu menu-exit">
+            <Link className="menu-action" to="/">
+                <img className="menu-logo" alt="logo definition" src={sair}></img>
+                <span className="menu-text">Deslogar</span>
+            </Link>
+
+        </div>
     </div>
 );
 

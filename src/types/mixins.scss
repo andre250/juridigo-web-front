@@ -1,5 +1,9 @@
-@mixin transition() {
+@mixin transitionAll() {
     transition: 0.75s all;
+}
+
+@mixin transition($prop) {
+    transition: 0.75s $prop;
 }
 
 @mixin border-definition($val){
